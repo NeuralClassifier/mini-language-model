@@ -6,7 +6,7 @@ $$
 T^x = \{t_i \mid i \leq n\}
 $$
 
-The Vocabulary Mapping funtion can be written as:
+The Vocabulary Mapping function can be written as:
 
 $$
 \Mu : T \to {0, 1, \ldots n-1}
