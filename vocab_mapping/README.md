@@ -9,5 +9,5 @@ $$
 The Vocabulary Mapping funtion can be written as:
 
 $$
-\Mu : T \to {t_i \mid i \leq n}
+\Mu : T \to {0, 1, \ldots n-1}
 $$
