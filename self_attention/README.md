@@ -7,7 +7,7 @@ $$
 Q = XW_Q, \quad K = XW_K, \quad V = XW_V
 $$
 
-where each weight matrix **W_Q, W_K, W_V** has shape **[embed_dim, head_dim]**. For simplicity, we assume **head_dim = embed_dim**.
+where each weight matrix $W_Q$, $W_K$, $W_V$ has shape [embed_dim, head_dim]
 
 ## Scaled Dot-Product Attention:
 Compute the attention scores:
