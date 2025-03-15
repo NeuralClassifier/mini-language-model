@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import sys
-import o
+import os
 
 current_dir = os.path.dirname(__file__)
 parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
