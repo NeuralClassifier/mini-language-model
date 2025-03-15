@@ -1,5 +1,12 @@
 import torch
 import torch.nn as nn
+import sys
+import o
+
+current_dir = os.path.dirname(__file__)
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.insert(0, parent_dir)
+
 from vocab_mapping.vocab_mapping import vocabulary_mapping
 from backbone_nn.linear.lin import Linear
 from backbone_nn.softmax.softm import softmax

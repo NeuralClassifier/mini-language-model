@@ -1,5 +1,12 @@
 import torch
 import torch.nn as nn
+import sys
+import o
+
+current_dir = os.path.dirname(__file__)
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.insert(0, parent_dir)
+
 from backbone_nn.linear.lin import Linear
 from backbone_nn.softmax.softm import softmax
 from backbone_nn.feed_forward.ff import FeedForward
