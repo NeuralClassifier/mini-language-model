@@ -23,3 +23,17 @@ h(x_3) \\
 h(x_4)
 \end{bmatrix}
 $$
+
+The embeddings that are learnt here after the traing are contextualized.
+
+## Self-Attention
+
+In this step we compute the attention scores of every word in the text to have its contextual representation. Self-attention is a tool to determine how much focus or importance one word (or token) should give to another word (or token) in the sentence when building its contextual representation. It’s almost like asking, "Which parts of the sentence should I pay more attention to when understanding the meaning of this word?"
+
+The attention mechanism works through three key components:
+
+Query (Q): The word that is asking for attention. It's the token whose representation is being built.
+Key (K): The words that are considered as possible sources of information for the query.
+Value (V): The actual information from the words (keys) that will be passed to the query.
+
+The attention score is essentially how much the query (a word in the sentence or block of text) should pay attention to each key (the other words in the same sentence or a text). This score is computed by taking the similarity between the query and the key.
