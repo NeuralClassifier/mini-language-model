@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 # import torch.nn.functional as F
 from vocab_mapping.vocab_mapping import vocabulary_mapping
+from min_lm.lm import MiniLM
 from self_attention.self_attention import SelfAttention
 from transformer.transformer import Transformer
 from backbone_nn.embeddings.embed import Embedding
@@ -52,5 +53,7 @@ if __name__ == "__main__":
     transformer_block = Transformer(embed_dim, hidden_dim)
     transformer_output = transformer_block(x)
     print("Transformer block output shape:", transformer_output.shape)
+
+    model = MiniLM(vocab_size, embed_dim, hidden_dim, seq_length)
 
 
