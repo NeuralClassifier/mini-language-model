@@ -1,6 +1,6 @@
 # Self-Attention
 
-##### Linear Projections:
+### Linear Projections:
 Given an input matrix **X** of shape **[seq_length, embed_dim]**, we generate **queries (Q)**, **keys (K)**, and **values (V)** using learned weight matrices:
 
 $$
