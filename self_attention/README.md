@@ -1,13 +1,35 @@
-# Vocabulary Mapping
+# Self-Attention
 
-Given a text dataset $D$, we define a tokenization function $\phi: D \to T^x$, where:
+##### Linear Projections:
+Given an input matrix **X** of shape **[seq_length, embed_dim]**, we generate **queries (Q)**, **keys (K)**, and **values (V)** using learned weight matrices:
 
-$$
-T^x = \{t_i \mid i \leq n\}
-$$
+\[
+Q = XW_Q, \quad K = XW_K, \quad V = XW_V
+\]
 
-The Vocabulary Mapping function can be written as:
+where each weight matrix **W_Q, W_K, W_V** has shape **[embed_dim, head_dim]**. For simplicity, we assume **head_dim = embed_dim**.
 
-$$
-\mu : T^x \to {0, 1, \ldots n-1}
-$$
+##### Scaled Dot-Product Attention:
+Compute the attention scores:
+
+\[
+\text{scores} = \frac{QK^T}{\sqrt{d_k}}
+\]
+
+where **d_k** is the dimension of the key vectors (**embed_dim** in our case).
+
+##### Softmax:
+Normalize the scores using the softmax function:
+
+\[
+\text{attention_weights} = \text{softmax}(\text{scores})
+\]
+
+##### Weighted Sum:
+Compute the final output by applying the attention weights to **V**:
+
+\[
+\text{output} = \text{attention_weights} \times V
+\]
+
+This process allows the model to focus on different parts of the input sequence dynamically, capturing contextual information effectively.
