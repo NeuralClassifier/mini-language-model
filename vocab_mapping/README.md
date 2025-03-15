@@ -11,3 +11,4 @@ The Vocabulary Mapping function can be written as:
 $$
 \mu : T^x \to {0, 1, \ldots n-1}
 $$
+
