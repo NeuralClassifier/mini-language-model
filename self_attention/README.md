@@ -16,7 +16,7 @@ $$
 scores = \frac{QK^T}{\sqrt{d_k}}
 $$
 
-where **d_k** is the dimension of the key vectors (**embed_dim** in our case).
+where $d_k$ is the dimension of the key vectors (**embed_dim** in our case).
 
 ### Softmax:
 Normalize the scores using the softmax function:
