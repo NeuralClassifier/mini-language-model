@@ -32,11 +32,16 @@ if __name__ == "__main__":
     embedded = embedding_layer(inputs)  # shape: [sequence_length, embed_dim]
     print("Embedded shape:", embedded.shape)
 
-    # For simplicity, we create a learnable positional encoding for our sequence length.
-seq_length = inputs.shape[0]
-positional_encoding = nn.Parameter(torch.zeros(seq_length, embed_dim))
+    # Create a learnable positional encoding for our sequence length.
+    seq_length = inputs.shape[0]
+    positional_encoding = nn.Parameter(torch.zeros(seq_length, embed_dim))
 
-# Add positional encoding to embedded tokens
-x = embedded + positional_encoding  # shape: [seq_length, embed_dim]
+    # Adding positional encoding to embedded tokens
+    x = embedded + positional_encoding  # shape: [seq_length, embed_dim]
+
+    # Instantiating and testing self-attention on input x.
+    self_attention = SelfAttention(embed_dim)
+    attn_output = self_attention(x)
+    print("Attention output shape:", attn_output.shape)
 
 

@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 from vocab_mapping.vocab_mapping import vocabulary_mapping
 from backbone_nn.linear.lin import Linear
-from backbone_nn.linear.lin import Linear
 from backbone_nn.softmax.softm import softmax
 import numpy as np
 
