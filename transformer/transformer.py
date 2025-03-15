@@ -6,7 +6,7 @@ from backbone_nn.softmax.softm import softmax
 from backbone_nn.feed_forward.ff import FeedForward
 import numpy as np
 
-# Transformer block combining attention and feed-forward networkj with residuals and layer normalization
+# trransformer combining attention and feed-forward networkj with residuals and layer normalization
 class Transformer(nn.Module):
     def __init__(self, embed_dim, hidden_dim):
         super(Transformer, self).__init__()
