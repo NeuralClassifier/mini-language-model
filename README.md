@@ -16,10 +16,10 @@ and we create:
 $$
 H = 
 \begin{bmatrix}
-v_1 \\
-v_2 \\
-v_3 \\
+h(x_1) \\
+h(x_2) \\
+h(x_3) \\
 \vdots \\
-v_n
+h(x_4)
 \end{bmatrix}
 $$
