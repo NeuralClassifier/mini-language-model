@@ -22,14 +22,14 @@ where **d_k** is the dimension of the key vectors (**embed_dim** in our case).
 Normalize the scores using the softmax function:
 
 $$
-attention_weights = \text{softmax}(\text{scores})
+attention_{weights} = softmax(\text{scores})
 $$
 
 ### Weighted Sum:
 Compute the final output by applying the attention weights to **V**:
 
 $$
-output = attention_weights \times V
+output = attention_{weights} \times V
 $$
 
 This process allows the model to focus on different parts of the input sequence dynamically, capturing contextual information effectively.
