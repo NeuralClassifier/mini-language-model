@@ -16,20 +16,21 @@ It consists of:
 Given an input tensor $X$, the forward pass follows:
 
 1. **Self-Attention with Residual Connection**
-   $$
-   A = SelfAttention(X)
-   $$
-   $$
-   X' = LayerNorm(X + A)
-   $$
+   
+$$
+A = SelfAttention(X)
+$$
+$$
+X' = LayerNorm(X + A)
+$$
 
 2. **Feed-Forward Network with Residual Connection**
-   $$
-   F = FFN(X')
-   $$
-   $$
-   Y = LayerNorm(X' + F)
-   $$
+$$
+F = FFN(X')
+$$
+$$
+Y = LayerNorm(X' + F)
+$$
 
 where:
 - `SelfAttention` computes attention scores.
