@@ -6,6 +6,7 @@ from min_lm.lm import MiniLM
 from self_attention.self_attention import SelfAttention
 from transformer.transformer import Transformer
 from backbone_nn.embeddings.embed import Embedding
+from trainer import trainer
 import numpy as np
 import argparse
 
@@ -55,5 +56,11 @@ if __name__ == "__main__":
     print("Transformer block output shape:", transformer_output.shape)
 
     model = MiniLM(vocab_size, embed_dim, hidden_dim, seq_length)
+
+    # Define loss and optimizer
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+
+    trained_model = trainer(model, inputs, targets, criterion, optimizer, epochs=100):
 
 
