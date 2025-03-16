@@ -169,8 +169,3 @@ Softmax([0.23, 0.74, 0.53, 0.38, 0.47, 0.86]) = [
 ```
 [0.12, 0.20, 0.16, 0.14, 0.15, 0.23]
 ```
-
-## Conclusion
-This example demonstrates how self-attention scores are computed using dot products between query and key vectors in a transformer model, followed by applying the softmax function to obtain final attention probabilities.
-
-
