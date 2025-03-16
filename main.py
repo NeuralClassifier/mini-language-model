@@ -14,12 +14,14 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Mini LLM")
     parser.add_argument("--embed_dim", type=int, required=True, help="Select embedding layer size")
     parser.add_argument("--hidden_dim", type=int, required=True, help="Select hidde layer size in the transformer")
+    parser.add_argument("--lr", type=int, required=True, help="Choose a learning rate")
+    parser.add_argument("--epochs", type=int, required=True, help="Total epochs to train the transformer")
    
     return parser.parse_args()
 
 if __name__ == "__main__":
-    # Sample text (you can replace this with any text data)
-    text = "hello world hello language model hello deep learning hello AI"
+    
+    text = "hello world hello language model hello deep learning hello AI" # Sample text (any user can replace this with any text data)
 
     with open('./dataset/fictionStorydata_subset.txt') as file:
         text = file.read()
@@ -58,8 +60,8 @@ if __name__ == "__main__":
 
     # Define loss and optimizer
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 
-    trained_model = trainer(model, inputs, targets, criterion, optimizer, epochs=100)
+    trained_model = trainer(model, inputs, targets, criterion, optimizer, epochs=args.epochs)
 
 
