@@ -5,12 +5,12 @@ This repository has a simple pipeline for a mini language model, as well as some
 ## Overview
 
 ```
-1. **Text Preprocessing**: Convert a sample text into tokenized inputs and targets using a vocabulary mapping.
-2. **Embedding Layer**: Map token indices to dense embedding vectors.
-3. **Positional Encoding**: Add learnable positional information to the embeddings.
-4. **Self-Attention**: Compute self-attention over the sequence.
-5. **Transformer Block**: Apply a transformer block to further process the sequence.
-6. **MiniLM Model**: Combine the above components into a final language model architecture.
+1. Text Preprocessing: Convert a sample text into tokenized inputs and targets using a vocabulary mapping.
+2. Embedding Layer: Map token indices to dense embedding vectors.
+3. Positional Encoding: Add learnable positional information to the embeddings.
+4. Self-Attention: Compute self-attention over the sequence.
+5. Transformer Block: Apply a transformer block to further process the sequence.
+6. MiniLM Model: Combine the above components into a final language model architecture.
 ```
 
 ## Detailed Step-by-Step Explanation
