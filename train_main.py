@@ -86,6 +86,7 @@ if __name__ == "__main__":
     # torch.save(trained_model.state_dict(), './model/trained_model.pth')
 
     model_config = {
+    "vocab":vocab,
     "vocab_size": vocab_size,
     "embed_dim": embed_dim,
     "hidden_dim": hidden_dim,
