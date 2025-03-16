@@ -9,7 +9,7 @@ from trainer import trainer
 from generate_text import generate_text
 import numpy as np
 import argparse
-import rmtree
+import shutil
 
 
 def parse_args():
@@ -25,7 +25,7 @@ def parse_args():
 if __name__ == "__main__":
 
     if os.path.exists('./model/'):
-        rmtree.shutil('./model/')
+        shutil.rmtree('./model/')
     
     text = "hello world hello language model hello deep learning hello AI" # Sample text (any user can replace this with any text data)
 
