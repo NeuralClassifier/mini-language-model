@@ -1,5 +1,13 @@
 import torch
 import torch.nn as nn
+
+import sys
+import os
+
+current_dir = os.path.dirname(__file__)
+parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
+sys.path.insert(0, parent_dir)
+
 from linear.lin import Linear
 from softmax.softm import softmax
 from activation.relu.relu import relu
