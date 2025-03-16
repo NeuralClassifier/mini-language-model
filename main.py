@@ -22,7 +22,7 @@ if __name__ == "__main__":
     # Sample text (you can replace this with any text data)
     text = "hello world hello language model hello deep learning hello AI"
 
-    # with open('/Users/kushankurghosh/Documents/fictionStorydata.txt') as file:
+    # with open('./fictionStorydata.txt') as file:
     #     text = file.read()
 
     inputs, targets = vocabulary_mapping(text)
