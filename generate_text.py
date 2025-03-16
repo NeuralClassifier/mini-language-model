@@ -43,7 +43,6 @@ def generate_text(model, seed_text, generate_len, vocab, seq_length):
         # If longer, take only the last seq_length tokens.
         seed_indices = seed_indices[-seq_length:]
     
-    # Convert the list into a tensor.
     current_seq = torch.tensor(seed_indices, dtype=torch.long)
     model.eval()  # set model to evaluation mode
     generated_tokens = seed_tokens.copy()
@@ -54,6 +53,7 @@ def generate_text(model, seed_text, generate_len, vocab, seq_length):
             logits = model(current_seq)  # shape: [seq_length, vocab_size]
             # We use the logits corresponding to the last token in the window.
             last_logits = logits[-1]
+            
             # Convert logits to probabilities.
             probs = softmax(last_logits, dim=0)
             # Sample the next token from the probability distribution.
