@@ -23,6 +23,8 @@ This repository has a simple pipeline for a mini language model, as well as some
 
 ### 2. How to train the model?
 
+Change the parameters as per your convinience
+
 ```
 python train_main.py --embed_dim 16 --hidden_dim 64 --lr 0.01 --epochs 100 --dataset subset
 ```
