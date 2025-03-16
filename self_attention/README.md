@@ -50,3 +50,85 @@ Attention_{score} = \frac{Q.K^T}{\sqrt{d_k}}
 $$
 
 $Q$ is the query vector (the word you're trying to represent), $K^T$ is the transpose of the key vector (the other words that are candidates for providing context), and $d_k$ is a scaling factor, usually the dimension of the key vectors, to avoid large numbers that could destabilize learning. **The dot product $Q.K^T$** measures how similar the query is to each key. Higher similarity means that the word the query is referring to has more relevance to it. **The division by $\sqrt{d_k}$** ensures that the dot product values don’t get too large, helping to keep the attention scores in a manageable range. This is just a normalization step. After calculating the attention scores, **we apply a softmax function** to convert them into probabilities. This step ensures that all attention scores add up to 1 (like a probability distribution), making them interpretable as how much attention each word should give to every other word.
+
+
+# Attention Mechanism Example
+
+This example walks through a simple case of computing attention scores in a transformer model.
+
+## Example Sentence
+
+Consider the sentence:
+
+```
+Alice met Bob at the cafe.
+```
+
+We want to compute the attention scores for the word **"met"** (the query) based on the rest of the sentence (the keys).
+
+### Defining Query and Keys
+- **Query (Q):** "met"
+- **Keys (K):** "Alice", "met", "Bob", "at", "the", "cafe"
+
+### Vector Representations
+Each word is represented as a vector after being processed by the language model:
+
+| Word  | Vector (Q or K)     |
+|--------|------------------|
+| Alice  | [0.9, 0.1, 0.2] |
+| met    | [0.1, 0.8, 0.3] |
+| Bob    | [0.7, 0.5, 0.1] |
+| at     | [0.4, 0.2, 0.6] |
+| the    | [0.2, 0.3, 0.8] |
+| cafe   | [0.3, 0.7, 0.9] |
+
+## Computing Attention Scores
+The attention score is computed as the dot product between **Q (met)** and each **K (word in the sentence)**.
+
+### Dot Product Calculations
+
+#### 1. "met" and "Alice"
+```
+0.1 × 0.9 + 0.8 × 0.1 + 0.3 × 0.2 = 0.23
+```
+
+#### 2. "met" and "met"
+```
+0.1 × 0.1 + 0.8 × 0.8 + 0.3 × 0.3 = 0.74
+```
+
+#### 3. "met" and "Bob"
+```
+0.1 × 0.7 + 0.8 × 0.5 + 0.3 × 0.1 = 0.53
+```
+
+#### 4. "met" and "at"
+```
+0.1 × 0.4 + 0.8 × 0.2 + 0.3 × 0.6 = 0.38
+```
+
+#### 5. "met" and "the"
+```
+0.1 × 0.2 + 0.8 × 0.3 + 0.3 × 0.8 = 0.47
+```
+
+#### 6. "met" and "cafe"
+```
+0.1 × 0.3 + 0.8 × 0.7 + 0.3 × 0.9 = 0.86
+```
+
+## Summary of Attention Scores
+| Word  | Attention Score |
+|--------|----------------|
+| Alice  | 0.23          |
+| met    | 0.74          |
+| Bob    | 0.53          |
+| at     | 0.38          |
+| the    | 0.47          |
+| cafe   | 0.86          |
+
+The highest attention score is assigned to **"cafe"**, meaning that in this context, "met" is most strongly related to "cafe" based on the given vector representations.
+
+## Conclusion
+This example demonstrates how self-attention scores are computed using dot products between query and key vectors in a transformer model.
+
