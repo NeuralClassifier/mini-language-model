@@ -8,6 +8,7 @@ parent_dir = os.path.abspath(os.path.join(current_dir, '..'))
 sys.path.insert(0, parent_dir)
 
 from vocab_mapping.vocab_mapping import vocabulary_mapping
+from self_attention.self_attention import SelfAttention
 from backbone_nn.linear.lin import Linear
 from backbone_nn.softmax.softm import softmax
 from backbone_nn.feed_forward.ff import FeedForward

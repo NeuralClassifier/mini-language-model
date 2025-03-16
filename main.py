@@ -24,7 +24,7 @@ if __name__ == "__main__":
     # with open('./fictionStorydata.txt') as file:
     #     text = file.read()
 
-    inputs, targets = vocabulary_mapping(text)
+    inputs, targets, vocab_size = vocabulary_mapping(text)
 
     args = parse_args()
     embed_dim = args.embed_dim

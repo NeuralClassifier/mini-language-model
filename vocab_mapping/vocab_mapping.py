@@ -8,4 +8,4 @@ def vocabulary_mapping(text):
 
     data = [vocab[token] for token in tokens]
 
-    return torch.tensor(data[:-1], dtype=torch.long), torch.tensor(data[1:], dtype=torch.long)
+    return torch.tensor(data[:-1], dtype=torch.long), torch.tensor(data[1:], dtype=torch.long), vocab_size 
