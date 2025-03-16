@@ -39,8 +39,8 @@ def trainer(model, inputs, targets, criterion, optimizer, epochs=100):
         logits = model(inputs)
         probs = softmax(logits, dim=-1)
         predicted_indices = torch.argmax(probs, dim=-1)
-        print("Input indices:", inputs.tolist())
-        print("Predicted next indices:", predicted_indices.tolist())
+        # print("Input indices:", inputs.tolist())
+        # print("Predicted next indices:", predicted_indices.tolist())
 
     return model
 

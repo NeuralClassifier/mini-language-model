@@ -42,7 +42,7 @@ if __name__ == "__main__":
         with open('./dataset/fictionStorydata_full.txt') as file:
             text = file.read()
 
-    inputs, targets, vocab_size = vocabulary_mapping(text)
+    inputs, targets, vocab_size, vocab = vocabulary_mapping(text)
 
     
     embed_dim = args.embed_dim
