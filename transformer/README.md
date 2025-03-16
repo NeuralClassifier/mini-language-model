@@ -7,9 +7,9 @@ This code is a simple Transformer model with self-attention, layer normalization
 It consists of:
 
 1. **Self-Attention**: Computes attention scores for each token in a sequence.
-2. **Residual Connections**: Helps gradients flow and prevents vanishing gradients.
-3. **Layer Normalization**: Normalizes activations for stability.
-4. **Feed-Forward Network (FFN)**: Applies a multi-layer perceptron for feature transformation.
+2. **Residual Connections**: The attention output is added back to the input.
+3. **Layer Normalization**: This basically ensures the resultant values are distributed with mean 0 and variance 1.
+4. **Feed-Forward Network (FFN)**: Applies a multi-layer perceptron for feature transformation. It basically does a linear transformation followed by ReLU activation. 
 
 ## Mathematical Formulation
 
