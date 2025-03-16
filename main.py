@@ -27,7 +27,7 @@ if __name__ == "__main__":
     inputs, targets = vocabulary_mapping(text)
 
     args = parse_args()
-    embed_dim = args.embed_dim # dimension of embedding vector
+    embed_dim = args.embed_dim
 
     # embedding layer
     embedding_layer = Embedding(vocab_size, embed_dim)
