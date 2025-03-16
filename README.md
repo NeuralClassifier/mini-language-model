@@ -12,9 +12,6 @@ This repository has a simple pipeline for a mini language model, as well as some
 5. Transformer Block: Apply a transformer block to further process the sequence.
 6. MiniLM Model: Combine the above components into a final language model architecture.
 ```
-
-## Detailed Step-by-Step Explanation
-
 ### 1. Argument Parser
 
 **Uses `argparse` to require two parameters**:
