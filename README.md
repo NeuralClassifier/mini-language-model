@@ -2,7 +2,7 @@
 
 This repository has a simple pipeline for a mini language model, as well as some basic notes about the fundamental concepts of how a language model works which are collected across various sources. The main file, `main.py`, outlines the following steps:
 
-## Overview
+## Overview of `main.py`
 
 ```
 1. Text Preprocessing: Convert a sample text into tokenized inputs and targets using a vocabulary mapping.
