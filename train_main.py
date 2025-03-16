@@ -17,7 +17,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Mini LLM")
     parser.add_argument("--embed_dim", type=int, required=True, help="Select embedding layer size")
     parser.add_argument("--hidden_dim", type=int, required=True, help="Select hidde layer size in the transformer")
-    parser.add_argument("--lr", type=int, required=True, help="Choose a learning rate")
+    parser.add_argument("--lr", type=float, required=True, help="Choose a learning rate")
     parser.add_argument("--epochs", type=int, required=True, help="Total epochs to train the transformer")
     parser.add_argument("--dataset", type=str, required=True, help="Mention subset/full data")
    
