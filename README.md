@@ -17,7 +17,7 @@ This repository has a simple pipeline for a mini language model, as well as some
 
 ### 1. Argument Parser
 
-- **Uses `argparse` to require two parameters**:
+**Uses `argparse` to require two parameters**:
   - `--embed_dim`: The size of the embedding vectors.
   - `--hidden_dim`: The hidden dimension size used in the transformer block.
 
