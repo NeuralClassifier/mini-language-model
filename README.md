@@ -1,45 +1,36 @@
 # mini-language-model
 
 
-## Embedding
+# Mini LLM Example
 
-Tokens created during the vocabbulary mapping step are categorical variables with no inherent numerical relationship. Deep learning models work with real-valued vectors, and not discreet indices. 
+This project demonstrates a simple pipeline for a mini language model built with PyTorch. It uses embeddings, positional encodings, self-attention, and a transformer block to process text data. The main file, `main.py`, outlines the following steps:
 
-The index values $t_i$ are arbitrary (e.g., "hello" could be index 0, "world" index 1, etc.). There is no meaningful numerical relationship between these indices (e.g. $t_1 = 0$, ​and $t_2 = 1$ do not imply similarity). These discreet labels does not have a natural order or similarity measure. Also, computing differentiability through gradients cannot be done using categorical indices. One hot encoding is one option, however, one-hot vectors treat every token as equally distant from every other token. There’s no notion of similarity built into the representation. Thus, we need a mapping from discrete token indices to a continuous vector space. We therefore learn an embedding function $h: Z \to R^d$ which maps each token index $x_i$ to a dense, continuous representation $h(x_i)$:
+## Overview
 
-$$
-h(x_i) = E[x_i]
-$$
+1. **Text Preprocessing**: Convert a sample text into tokenized inputs and targets using a vocabulary mapping.
+2. **Embedding Layer**: Map token indices to dense embedding vectors.
+3. **Positional Encoding**: Add learnable positional information to the embeddings.
+4. **Self-Attention**: Compute self-attention over the sequence.
+5. **Transformer Block**: Apply a transformer block to further process the sequence.
+6. **MiniLM Model**: Combine the above components into a final language model architecture.
 
-and we create:
+## Detailed Step-by-Step Explanation
 
-$$
-H = 
-\begin{bmatrix}
-h(x_1) \\
-h(x_2) \\
-h(x_3) \\
-\vdots \\
-h(x_4)
-\end{bmatrix}
-$$
+### 1. Import Dependencies and Define Argument Parser
 
-The embeddings that are learnt here after the traing are contextualized.
+- **Imports**: The script imports PyTorch modules along with custom modules:
+  - `vocabulary_mapping` from `vocab_mapping.vocab_mapping`: Converts text into numeric tokens.
+  - `Embedding` from `backbone_nn.embeddings.embed`: Lookup table for embeddings.
+  - `SelfAttention` from `self_attention.self_attention`: Implements self-attention mechanism.
+  - `Transformer` from `transformer.transformer`: A transformer block for further processing.
+  - `MiniLM` from `min_lm.lm`: The final language model that combines all components.
+- **Argument Parsing**: Uses `argparse` to require two parameters:
+  - `--embed_dim`: The size of the embedding vectors.
+  - `--hidden_dim`: The hidden dimension size used in the transformer block.
 
-## Self-Attention
+### 2. Main Execution Block
 
-In this step we compute the attention scores of every word in the text to have its contextual representation. Self-attention is a tool to determine how much focus or importance one word (or token) should give to another word (or token) in the sentence when building its contextual representation. It’s almost like asking, "Which parts of the sentence should I pay more attention to when understanding the meaning of this word?"
+- **Sample Text**: A default text is defined:
+  ```python
+  text = "hello world hello language model hello deep learning hello AI"
 
-The attention mechanism works through three key components:
-
-Query (Q): The word that is asking for attention. It's the token whose representation is being built.
-Key (K): The words that are considered as possible sources of information for the query.
-Value (V): The actual information from the words (keys) that will be passed to the query.
-
-The attention score is essentially how much the query (a word in the sentence or block of text) should pay attention to each key (the other words in the same sentence or a text). This score is computed by taking the similarity between the query and the key. For each word in the sentence/text, we calculate attention scores by comparing the query (Q) with all the keys (K):
-
-$$
-Attention_{score} = \frac{Q.K^T}{\sqrt{d_k}}
-$$
-
-$Q$ is the query vector (the word you're trying to represent), $K^T$ is the transpose of the key vector (the other words that are candidates for providing context), and $d_k$ is a scaling factor, usually the dimension of the key vectors, to avoid large numbers that could destabilize learning. **The dot product $Q.K^T$** measures how similar the query is to each key. Higher similarity means that the word the query is referring to has more relevance to it. **The division by $\sqrt{d_k}$** ensures that the dot product values don’t get too large, helping to keep the attention scores in a manageable range. This is just a normalization step. After calculating the attention scores, **we apply a softmax function** to convert them into probabilities. This step ensures that all attention scores add up to 1 (like a probability distribution), making them interpretable as how much attention each word should give to every other word.
