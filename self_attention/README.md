@@ -129,6 +129,125 @@ The attention score is computed as the dot product between **Q (met)** and each 
 
 The highest attention score is assigned to **"cafe"**, meaning that in this context, "met" is most strongly related to "cafe" based on the given vector representations.
 
+# Attention Mechanism Example
+
+This example walks through a simple case of computing attention scores in a transformer model.
+
+## Example Sentence
+
+Consider the sentence:
+
+```
+Alice met Bob at the cafe.
+```
+
+We want to compute the attention scores for the word **"met"** (the query) based on the rest of the sentence (the keys).
+
+### Defining Query and Keys
+- **Query (Q):** "met"
+- **Keys (K):** "Alice", "met", "Bob", "at", "the", "cafe"
+
+### Vector Representations
+Each word is represented as a vector after being processed by the language model:
+
+| Word  | Vector (Q or K)     |
+|--------|------------------|
+| Alice  | [0.9, 0.1, 0.2] |
+| met    | [0.1, 0.8, 0.3] |
+| Bob    | [0.7, 0.5, 0.1] |
+| at     | [0.4, 0.2, 0.6] |
+| the    | [0.2, 0.3, 0.8] |
+| cafe   | [0.3, 0.7, 0.9] |
+
+## Computing Attention Scores
+The attention score is computed as the dot product between **Q (met)** and each **K (word in the sentence)**.
+
+### Dot Product Calculations
+
+#### 1. "met" and "Alice"
+```
+0.1 × 0.9 + 0.8 × 0.1 + 0.3 × 0.2 = 0.23
+```
+
+#### 2. "met" and "met"
+```
+0.1 × 0.1 + 0.8 × 0.8 + 0.3 × 0.3 = 0.74
+```
+
+#### 3. "met" and "Bob"
+```
+0.1 × 0.7 + 0.8 × 0.5 + 0.3 × 0.1 = 0.53
+```
+
+#### 4. "met" and "at"
+```
+0.1 × 0.4 + 0.8 × 0.2 + 0.3 × 0.6 = 0.38
+```
+
+#### 5. "met" and "the"
+```
+0.1 × 0.2 + 0.8 × 0.3 + 0.3 × 0.8 = 0.47
+```
+
+#### 6. "met" and "cafe"
+```
+0.1 × 0.3 + 0.8 × 0.7 + 0.3 × 0.9 = 0.86
+```
+
+## Summary of Attention Scores
+| Word  | Attention Score |
+|--------|----------------|
+| Alice  | 0.23          |
+| met    | 0.74          |
+| Bob    | 0.53          |
+| at     | 0.38          |
+| the    | 0.47          |
+| cafe   | 0.86          |
+
+The highest attention score is assigned to **"cafe"**, meaning that in this context, "met" is most strongly related to "cafe" based on the given vector representations.
+
+## Step 2: Applying Softmax
+Now, we apply the softmax function to the dot products to get the final attention scores. The softmax function takes the raw scores (dot products) and turns them into probabilities.
+
+### Softmax Calculation
+#### Given raw scores:
+```
+[0.23, 0.74, 0.53, 0.38, 0.47, 0.86]
+```
+
+#### Exponentiate each raw score:
+```
+exp(0.23) = 1.258
+exp(0.74) = 2.101
+exp(0.53) = 1.698
+exp(0.38) = 1.462
+exp(0.47) = 1.599
+exp(0.86) = 2.365
+```
+
+#### Sum the exponentiated values:
+```
+1.258 + 2.101 + 1.698 + 1.462 + 1.599 + 2.365 = 10.483
+```
+
+#### Compute softmax probabilities:
+```
+Softmax([0.23, 0.74, 0.53, 0.38, 0.47, 0.86]) = [
+ 1.258 / 10.483,
+ 2.101 / 10.483,
+ 1.698 / 10.483,
+ 1.462 / 10.483,
+ 1.599 / 10.483,
+ 2.365 / 10.483
+]
+```
+
+#### Resulting attention scores:
+```
+[0.12, 0.20, 0.16, 0.14, 0.15, 0.23]
+```
+
 ## Conclusion
-This example demonstrates how self-attention scores are computed using dot products between query and key vectors in a transformer model.
+This example demonstrates how self-attention scores are computed using dot products between query and key vectors in a transformer model, followed by applying the softmax function to obtain final attention probabilities.
+
 
