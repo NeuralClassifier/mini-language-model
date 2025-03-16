@@ -42,5 +42,5 @@ if __name__ == "__main__":
 
         seed_text = "hello world hello language model"
         seed_text = args.prompt
-        generated_text = generate_text(model, seed_text, generate_len=20, vocab=vocab, seq_length=seq_length)
+        generated_text = generate_text(model, seed_text, generate_len=20, vocab=model_config["vocab"], seq_length=seq_length)
         print("Generated text:", generated_text)
