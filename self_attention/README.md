@@ -71,7 +71,7 @@ We want to compute the attention scores for the word **"met"** (the query) based
 - **Keys (K):** "Alice", "met", "Bob", "at", "the", "cafe"
 
 ### Vector Representations
-Again, lets just assume that every word is made as a simple vector after being processed by the language model:
+Lets just assume that every word is made as a simple vector after being processed by the language model:
 
 | Word  | Vector (Q or K)     |
 |--------|------------------|
