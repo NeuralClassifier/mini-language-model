@@ -15,7 +15,7 @@ import shutil
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Mini LLM")
-    parser.add_argument("--prompt", type=int, required=True, help="Insert the prompt")
+    parser.add_argument("--prompt", type=str, required=True, help="Insert the prompt")
 
    
     return parser.parse_args()
