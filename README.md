@@ -27,3 +27,8 @@ This repository has a simple pipeline for a mini language model, as well as some
 python train_main.py --embed_dim 16 --hidden_dim 64 --lr 0.01 --epochs 100 --dataset subset
 ```
 
+### 3. How to use the trained model?
+
+```
+python generate.py --prompt *ENTER THE PROMPT HERE*
+```
