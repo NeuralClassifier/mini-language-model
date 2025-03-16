@@ -1,8 +1,8 @@
 # mini-language-model
 
-This repository has a simple pipeline for a mini language model, as well as some basic notes about the fundamental concepts of how a language model works which are collected across various sources. The main file, `main.py`, outlines the following steps:
+This repository has a simple pipeline for a mini language model, as well as some basic notes about the fundamental concepts of how a language model works which are collected across various sources. The main file, `train_main.py`, outlines the following steps:
 
-## Overview of `main.py`
+## Overview of `train_main.py`
 
 ```
 1. Text Preprocessing: Convert a sample text into tokenized inputs and targets using a vocabulary mapping.
@@ -17,6 +17,9 @@ This repository has a simple pipeline for a mini language model, as well as some
 **Uses `argparse` to require two parameters**:
   - `--embed_dim`: The size of the embedding vectors.
   - `--hidden_dim`: The hidden dimension size used in the transformer block.
+  - `--lr`: The learning rate for the model
+  - `--epochs`: Total epochs to train the transformer
+  - `--dataset`: To train on full dataset or a subset
 
 ### 2. Main Execution Block
 
