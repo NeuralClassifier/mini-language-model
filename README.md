@@ -39,5 +39,7 @@ Value (V): The actual information from the words (keys) that will be passed to t
 The attention score is essentially how much the query (a word in the sentence or block of text) should pay attention to each key (the other words in the same sentence or a text). This score is computed by taking the similarity between the query and the key. For each word in the sentence/text, we calculate attention scores by comparing the query (Q) with all the keys (K):
 
 $$
-Attention score = \frac{Q.K^T}{\sqrt{d_k}}
+Attention_{score} = \frac{Q.K^T}{\sqrt{d_k}}
 $$
+
+$Q$ is the query vector (the word you're trying to represent), $K^T$ is the transpose of the key vector (the other words that are candidates for providing context), and $d_k$ is a scaling factor, usually the dimension of the key vectors, to avoid large numbers that could destabilize learning.
