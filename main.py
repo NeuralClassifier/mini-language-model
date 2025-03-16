@@ -60,6 +60,6 @@ if __name__ == "__main__":
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 
-    trained_model = trainer(model, inputs, targets, criterion, optimizer, epochs=100):
+    trained_model = trainer(model, inputs, targets, criterion, optimizer, epochs=100)
 
 
