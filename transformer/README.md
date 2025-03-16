@@ -25,6 +25,7 @@ X' = LayerNorm(X + A)
 $$
 
 2. **Feed-Forward Network with Residual Connection**
+   
 $$
 F = FFN(X')
 $$
