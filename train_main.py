@@ -85,6 +85,6 @@ if __name__ == "__main__":
     torch.save(trained_model.state_dict(), './model/trained_model.pth')
 
 
-seed_text = "hello world hello language model"
-generated_text = generate_text(model, seed_text, generate_len=10, vocab=vocab, seq_length=seq_length)
-print("Generated text:", generated_text)
+# seed_text = "hello world hello language model"
+# generated_text = generate_text(model, seed_text, generate_len=10, vocab=vocab, seq_length=seq_length)
+# print("Generated text:", generated_text)
