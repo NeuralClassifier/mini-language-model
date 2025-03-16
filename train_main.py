@@ -9,6 +9,7 @@ from trainer import trainer
 from generate_text import generate_text
 import numpy as np
 import argparse
+import rmtree
 
 
 def parse_args():
@@ -22,6 +23,9 @@ def parse_args():
     return parser.parse_args()
 
 if __name__ == "__main__":
+
+    if os.path.exists('./model/'):
+        rmtree.shutil('./model/')
     
     text = "hello world hello language model hello deep learning hello AI" # Sample text (any user can replace this with any text data)
 
@@ -74,6 +78,11 @@ if __name__ == "__main__":
     optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 
     trained_model = trainer(model, inputs, targets, criterion, optimizer, epochs=args.epochs)
+
+    if not os.path.exists('./model/'):
+        os.makedirs('./model/')
+
+    torch.save(trained_model.state_dict(), './model/trained_model.pth')
 
 
 seed_text = "hello world hello language model"
