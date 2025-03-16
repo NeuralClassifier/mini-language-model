@@ -6,6 +6,7 @@ from self_attention.self_attention import SelfAttention
 from transformer.transformer import Transformer
 from backbone_nn.embeddings.embed import Embedding
 from trainer import trainer
+from generate_text import generate_text
 import numpy as np
 import argparse
 
@@ -16,6 +17,7 @@ def parse_args():
     parser.add_argument("--hidden_dim", type=int, required=True, help="Select hidde layer size in the transformer")
     parser.add_argument("--lr", type=int, required=True, help="Choose a learning rate")
     parser.add_argument("--epochs", type=int, required=True, help="Total epochs to train the transformer")
+    parser.add_argument("--dataset", type=str, required=True, help="Mention subset/full data")
    
     return parser.parse_args()
 
@@ -23,12 +25,21 @@ if __name__ == "__main__":
     
     text = "hello world hello language model hello deep learning hello AI" # Sample text (any user can replace this with any text data)
 
-    with open('./dataset/fictionStorydata_subset.txt') as file:
-        text = file.read()
+    args = parse_args()
+
+    if args.dataset.lower() == 'subset':
+
+        with open('./dataset/fictionStorydata_subset.txt') as file:
+            text = file.read()
+            
+    elif args.dataset.lower() == 'full':
+
+        with open('./dataset/fictionStorydata_full.txt') as file:
+            text = file.read()
 
     inputs, targets, vocab_size = vocabulary_mapping(text)
 
-    args = parse_args()
+    
     embed_dim = args.embed_dim
 
     # embedding layer
@@ -65,3 +76,6 @@ if __name__ == "__main__":
     trained_model = trainer(model, inputs, targets, criterion, optimizer, epochs=args.epochs)
 
 
+seed_text = "hello world hello language model"
+generated_text = generate_text(model, seed_text, generate_len=10, vocab=vocab, seq_length=seq_length)
+print("Generated text:", generated_text)
