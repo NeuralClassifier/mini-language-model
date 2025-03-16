@@ -1,13 +1,9 @@
-# Vocabulary Mapping
+# MiniLM Model
 
-Given a text dataset $D$, we define a tokenization function $\phi: D \to T^x$, where:
+Embedding Layer: Converts input token indices into dense vector representations.
 
-$$
-T^x = \{t_i \mid i \leq n\}
-$$
+Positional Encoding: Adds information about the position of words in the sequence.
 
-The Vocabulary Mapping function can be written as:
+Transformer Layer: Processes the embeddings using self-attention mechanisms.
 
-$$
-\mu : T^x \to {0, 1, \ldots n-1}
-$$
+Output Projection: Maps the processed embeddings to the vocabulary space.
