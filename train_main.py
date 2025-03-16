@@ -83,7 +83,16 @@ if __name__ == "__main__":
     if not os.path.exists('./model/'):
         os.makedirs('./model/')
 
-    torch.save(trained_model.state_dict(), './model/trained_model.pth')
+    # torch.save(trained_model.state_dict(), './model/trained_model.pth')
+
+    model_config = {
+    "vocab_size": vocab_size,
+    "embed_dim": embed_dim,
+    "hidden_dim": hidden_dim,
+    "seq_length": seq_length,
+    "state_dict": trained_model.state_dict()
+    }
+    torch.save(model_config, './model/trained_model.pth')
 
 
 # seed_text = "hello world hello language model"
