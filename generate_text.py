@@ -6,6 +6,7 @@ from self_attention.self_attention import SelfAttention
 from transformer.transformer import Transformer
 from backbone_nn.embeddings.embed import Embedding
 from trainer import trainer
+from softmax.softm import softmax
 import numpy as np
 import argparse
 
@@ -29,6 +30,8 @@ def generate_text(model, seed_text, generate_len, vocab, seq_length):
     seed_tokens = seed_text.split()
     # Convert tokens to indices.
     seed_indices = [vocab.get(token, 0) for token in seed_tokens]  # use index 0 if token not found
+
+    inv_vocab = {i: token for token, i in vocab.items()}
     
     # Ensure the seed has exactly `seq_length` tokens:
     if len(seed_indices) < seq_length:
@@ -52,7 +55,7 @@ def generate_text(model, seed_text, generate_len, vocab, seq_length):
             # We use the logits corresponding to the last token in the window.
             last_logits = logits[-1]
             # Convert logits to probabilities.
-            probs = F.softmax(last_logits, dim=0)
+            probs = softmax(last_logits, dim=0)
             # Sample the next token from the probability distribution.
             next_token_idx = torch.multinomial(probs, num_samples=1).item()
             
