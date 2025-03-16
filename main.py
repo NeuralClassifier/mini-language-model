@@ -21,8 +21,8 @@ if __name__ == "__main__":
     # Sample text (you can replace this with any text data)
     text = "hello world hello language model hello deep learning hello AI"
 
-    # with open('./fictionStorydata.txt') as file:
-    #     text = file.read()
+    with open('./dataset/fictionStorydata_subset.txt') as file:
+        text = file.read()
 
     inputs, targets, vocab_size = vocabulary_mapping(text)
 
