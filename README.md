@@ -15,15 +15,9 @@ This repository has a simple pipeline for a mini language model, as well as some
 
 ## Detailed Step-by-Step Explanation
 
-### 1. Import Dependencies and Define Argument Parser
+### 1. Argument Parser
 
-- **Imports**: The script imports PyTorch modules along with custom modules:
-  - `vocabulary_mapping` from `vocab_mapping.vocab_mapping`: Converts text into numeric tokens.
-  - `Embedding` from `backbone_nn.embeddings.embed`: Lookup table for embeddings.
-  - `SelfAttention` from `self_attention.self_attention`: Implements self-attention mechanism.
-  - `Transformer` from `transformer.transformer`: A transformer block for further processing.
-  - `MiniLM` from `min_lm.lm`: The final language model that combines all components.
-- **Argument Parsing**: Uses `argparse` to require two parameters:
+- **Uses `argparse` to require two parameters**:
   - `--embed_dim`: The size of the embedding vectors.
   - `--hidden_dim`: The hidden dimension size used in the transformer block.
 
