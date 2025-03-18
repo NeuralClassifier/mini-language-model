@@ -21,7 +21,10 @@ This repository has a simple pipeline for a mini language model, as well as some
   - `--epochs`: Total epochs to train the transformer
   - `--dataset`: To train on full dataset or a subset
 
-### 2. How to train the model?
+### 2. Some Notes to look for:
+  - Self-Attention: Click here
+
+### 3. How to train the model?
 
 Change the parameters as per your convinience
 
@@ -29,7 +32,7 @@ Change the parameters as per your convinience
 python train_main.py --embed_dim 16 --hidden_dim 64 --lr 0.01 --epochs 100 --dataset subset
 ```
 
-### 3. How to use the trained model?
+### 4. How to use the trained model?
 
 ```
 python generate.py --prompt *ENTER THE PROMPT HERE*
