@@ -23,6 +23,7 @@ This repository has a simple pipeline for a mini language model, as well as some
 
 ### 2. Some Notes to look for:
   - Self-Attention: Click [here](https://github.com/NeuralClassifier/mini-language-model/tree/main/self_attention)
+  - Transformer: Click [here](https://github.com/NeuralClassifier/mini-language-model/tree/main/transformer)
 
 ### 3. How to train the model?
 
