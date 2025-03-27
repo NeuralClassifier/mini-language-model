@@ -14,55 +14,58 @@ import argparse
 
 def generate_text(model, seed_text, generate_len, vocab, seq_length):
     """
-    Generates text using a sliding window approach.
+    generates text using a sliding window approach
     
     Args:
-      model: The trained language model.
-      seed_text: (Prompt).
-      generate_len: Number of tokens to generate.
-      vocab: Dictionary mapping tokens to indices.
-      seq_length: Fixed sequence length the model expects.
+      model: trained language model
+      seed_text: (prompt)
+      generate_len: number of tokens to generate
+      vocab: dictionary mapping tokens to indices
+      seq_length: fixed sequence length the model expects
       
     Returns:
-      A string with the generated text.
+        string with the generated text
     """
-    # Tokenize the seed text.
+
+
+    
+    # tokenize the seed text.
     seed_tokens = seed_text.split()
-    # Convert tokens to indices.
-    seed_indices = [vocab.get(token, 0) for token in seed_tokens]  # use index 0 if token not found
+    # tokens to indices.
+    seed_indices = [vocab.get(token, 0) for token in seed_tokens]  # using index 0 if token not found
 
     inv_vocab = {i: token for token, i in vocab.items()}
     
-    # Ensure the seed has exactly `seq_length` tokens:
+    # ensure the seed has exactly seq_length tokens
     if len(seed_indices) < seq_length:
-        # If shorter, repeat the seed until reaching the required length.
+        # if shorter, repeating the seed until reaching the required length
         while len(seed_indices) < seq_length:
             seed_indices.extend(seed_indices)
         seed_indices = seed_indices[:seq_length]
     elif len(seed_indices) > seq_length:
-        # If longer, take only the last seq_length tokens.
+        # if longer, take only the last seq_length tokens
         seed_indices = seed_indices[-seq_length:]
     
     current_seq = torch.tensor(seed_indices, dtype=torch.long)
-    model.eval()  # set model to evaluation mode
+    model.eval()
     generated_tokens = seed_tokens.copy()
     
-    # Generation loop.
+    # generating output
     for _ in range(generate_len):
         with torch.no_grad():
             logits = model(current_seq)  # shape: [seq_length, vocab_size]
             # We use the logits corresponding to the last token in the window.
             last_logits = logits[-1]
             
-            # Convert logits to probabilities.
+            # logits to probabilities
             probs = softmax(last_logits, dim=0)
-            # Sample the next token from the probability distribution.
+            # sample the next token from the softmax probability distribution
             next_token_idx = torch.multinomial(probs, num_samples=1).item()
             
-            # Append the generated token (convert index back to token).
+            # appending the generated token to convert index back to token
             generated_tokens.append(inv_vocab[next_token_idx])
             
-            # Update current_seq: slide the window by dropping the first token and appending the new token.
+            # updating current_seq: sliding the window by dropping the first token and appending the new token
             current_seq = torch.cat([current_seq[1:], torch.tensor([next_token_idx], dtype=torch.long)])
     
     return ' '.join(generated_tokens)
