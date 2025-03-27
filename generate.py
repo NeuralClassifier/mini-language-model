@@ -34,13 +34,10 @@ if __name__ == "__main__":
 
         model = MiniLM(vocab_size, embed_dim, hidden_dim, seq_length)
 
-        # Load the state dictionary
+        # Loading the model parameters of the trained model
         model.load_state_dict(model_config["state_dict"])
-        model.eval()  # Set to evaluation mode
+        model.eval()
 
-
-
-        seed_text = "hello world hello language model"
         seed_text = args.prompt
         generated_text = generate_text(model, seed_text, generate_len=20, vocab=model_config["vocab"], seq_length=seq_length)
         print("Generated text:", generated_text)
