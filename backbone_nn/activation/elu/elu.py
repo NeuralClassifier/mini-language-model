@@ -1,6 +1,6 @@
 import torch
 
-def custom_elu(x, alpha=1.0):
+def elu(x, alpha=1.0):
     """
     Exponential Linear Unit
     
