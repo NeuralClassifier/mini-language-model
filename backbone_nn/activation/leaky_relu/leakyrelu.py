@@ -1,6 +1,6 @@
 import torch
 
-def custom_leaky_relu(x, negative_slope=0.01):
+def leaky_relu(x, negative_slope=0.01):
     """
     Leaky ReLU
     
